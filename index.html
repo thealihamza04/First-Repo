@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Hamza | Software Engineer Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0a0a0c',
+                        surface: '#121218',
+                        surfaceBorder: '#1f1f2e',
+                        surfaceHover: '#181824',
+                        accentBlue: '#3b82f6',
+                        accentCyan: '#06b6d4',
+                        accentPurple: '#8b5cf6',
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 0 20px -5px rgba(59, 130, 246, 0.4)',
+                        'glow-purple': '0 0 20px -5px rgba(139, 92, 246, 0.4)',
+                        'glow-cyan': '0 0 20px -5px rgba(6, 182, 212, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f1f2e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-gray-200 font-sans antialiased selection:bg-blue-500 selection:text-white min-h-screen relative overflow-x-hidden">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-obsidian/80 backdrop-blur-md border-b border-surfaceBorder transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Initials / Logo -->
+            <a href="#hero" class="flex items-center space-x-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-mono font-bold text-lg shadow-glow-blue group-hover:scale-105 transition-transform duration-200">
+                    AH
+                </div>
+                <span class="font-bold text-lg tracking-tight text-white group-hover:text-blue-400 transition-colors">Ali Hamza<span class="text-blue-500">.</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Button Desktop -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#contact" class="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-glow-blue transition-all duration-200">
+                    Hire Me
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-400 hover:text-white focus:outline-none p-2" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-surface border-b border-surfaceBorder px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-surfaceBorder">About</a>
+            <a href="#skills" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-surfaceBorder">Skills</a>
+            <a href="#projects" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-surfaceBorder">Projects</a>
+            <a href="#experience" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-surfaceBorder">Experience</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-surfaceBorder">Contact</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-[90vh] flex items-center justify-center py-20 px-4 grid-bg overflow-hidden">
+            <!-- Background Glow Elements -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10 space-y-8">
+                <!-- Availability Badge -->
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-surface border border-surfaceBorder text-xs font-mono text-cyan-400">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 -ml-4"></span>
+                    <span>Available for full-time & high-impact remote roles</span>
+                </div>
+
+                <!-- Main Title & Headline -->
+                <div class="space-y-4">
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white">
+                        Hi, I'm <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent">Ali Hamza</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-semibold text-gray-300">
+                        Software Engineer based in <span class="text-white border-b-2 border-blue-500">Lahore, Pakistan</span>
+                    </p>
+                </div>
+
+                <!-- Professional Summary -->
+                <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Specializing in building robust full-stack web applications, high-performance RESTful APIs, and intelligent AI-powered systems with modern frameworks (<span class="text-gray-200">Next.js, LangChain, PyTorch, FastAPI, Node.js</span>).
+                </p>
+
+                <!-- Hero Call To Actions -->
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                    <a href="#projects" class="px-6 py-3.5 text-sm font-medium rounded-xl text-white bg-blue-600 hover:bg-blue-500 shadow-glow-blue transition-all duration-200 flex items-center space-x-2">
+                        <span>View Projects</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                    <a href="#contact" class="px-6 py-3.5 text-sm font-medium rounded-xl text-gray-300 bg-surface border border-surfaceBorder hover:border-gray-500 hover:text-white transition-all duration-200">
+                        Contact Me
+                    </a>
+                    <button onclick="copyContactEmail()" class="px-4 py-3.5 text-sm font-medium rounded-xl text-gray-400 bg-surface border border-surfaceBorder hover:border-blue-500 hover:text-blue-400 transition-all duration-200 flex items-center space-x-2" title="Copy Email">
+                        <i class="fa-regular fa-copy"></i>
+                        <span id="copyBtnText">Copy Email</span>
+                    </button>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center justify-center space-x-6 pt-6 text-gray-400">
+                    <a href="https://github.com/thealihamza04" target="_blank" rel="noopener noreferrer" class="hover:text-white text-2xl transition-colors" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/thealihamza" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 text-2xl transition-colors" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:thealihamza04@gmail.com" class="hover:text-cyan-400 text-2xl transition-colors" title="Email">
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
+                    <a href="tel:+923252936408" class="hover:text-emerald-400 text-2xl transition-colors" title="Phone">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Tech Stack Section -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-surfaceBorder/50">
+            <div class="space-y-4 mb-12 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 text-blue-400 font-mono text-sm uppercase tracking-widest">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Technical Capabilities</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Skills & Technologies</h2>
+                <p class="text-gray-400 max-w-xl">A full range of software engineering capabilities spanning modern frontend components, scalable backend APIs, and cutting-edge AI integrations.</p>
+            </div>
+
+            <!-- Grid of Skill Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- AI & Machine Learning -->
+                <div class="p-6 rounded-2xl bg-surface border border-surfaceBorder hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">AI & Data Engineering</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">PyTorch</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">LangChain</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">Hugging Face</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">FAISS</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">Whisper API</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">scikit-learn</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">pandas</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-purple-300 font-mono">NumPy</span>
+                    </div>
+                </div>
+
+                <!-- Frontend Development -->
+                <div class="p-6 rounded-2xl bg-surface border border-surfaceBorder hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Frontend Architecture</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">React</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">Next.js</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">TypeScript</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">Tailwind CSS</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">Zustand</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">shadcn/ui</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-blue-300 font-mono">Vite</span>
+                    </div>
+                </div>
+
+                <!-- Backend & APIs -->
+                <div class="p-6 rounded-2xl bg-surface border border-surfaceBorder hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-server text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Backend & APIs</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-cyan-300 font-mono">Node.js</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-cyan-300 font-mono">Express.js</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-cyan-300 font-mono">FastAPI</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-cyan-300 font-mono">RESTful APIs</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-cyan-300 font-mono">Pydantic</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-cyan-300 font-mono">Zod</span>
+                    </div>
+                </div>
+
+                <!-- Languages & Core -->
+                <div class="p-6 rounded-2xl bg-surface border border-surfaceBorder hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-layer-group text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Languages & Core</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-emerald-300 font-mono">JavaScript</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-emerald-300 font-mono">TypeScript</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-emerald-300 font-mono">Python</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-emerald-300 font-mono">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Desktop & Mobile -->
+                <div class="p-6 rounded-2xl bg-surface border border-surfaceBorder hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Desktop & Mobile</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-amber-300 font-mono">Electron.js</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-amber-300 font-mono">React Native</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-amber-300 font-mono">Expo</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-amber-300 font-mono">IPC Bridge</span>
+                    </div>
+                </div>
+
+                <!-- Databases, Media & Infrastructure -->
+                <div class="p-6 rounded-2xl bg-surface border border-surfaceBorder hover:border-rose-500/50 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-database text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Data & Media Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-rose-300 font-mono">MongoDB</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-rose-300 font-mono">Firebase</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-rose-300 font-mono">Cloudflare R2</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-rose-300 font-mono">FFmpeg</span>
+                        <span class="px-2.5 py-1 text-xs rounded-lg bg-surfaceBorder text-rose-300 font-mono">Remotion</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-surfaceBorder/50">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 space-y-4 md:space-y-0">
+                <div>
+                    <div class="inline-flex items-center space-x-2 text-blue-400 font-mono text-sm uppercase tracking-widest">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span>Portfolio Showcase</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Featured Projects</h2>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 bg-surface p-1.5 rounded-xl border border-surfaceBorder" id="filterContainer">
+                    <button class="filter-btn active px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 bg-blue-600 text-white" data-filter="all">All</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 text-gray-400 hover:text-white" data-filter="ai">AI & ML</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 text-gray-400 hover:text-white" data-filter="web">Full-Stack Web</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 text-gray-400 hover:text-white" data-filter="desktop-mobile">Mobile & Desktop</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+                <!-- Project 1: VIDERA -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-blue-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="desktop-mobile ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800/50 px-2.5 py-1 rounded-md">Desktop & AI</span>
+                            <i class="fa-solid fa-film text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2">VIDERA – AI Video Editor</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">Desktop video editor with Electron.js, React, and Zustand. Features FFmpeg processing pipelines in Node child processes and Whisper AI captions.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Electron.js</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">React</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">FFmpeg</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Whisper API</span>
+                        </div>
+                        <button onclick="openModal('videra')" class="w-full py-2 bg-surfaceBorder hover:bg-blue-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Financial Sentiment -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-purple-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-purple-400 bg-purple-950/40 border border-purple-800/50 px-2.5 py-1 rounded-md">AI & Quant</span>
+                            <i class="fa-solid fa-chart-line text-gray-500 group-hover:text-purple-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-2">Financial Sentiment Simulation</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">FinBERT NLP sentiment classification engine with FastAPI inference endpoints coupled with trading backtests.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">PyTorch</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Transformers</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">FastAPI</span>
+                        </div>
+                        <button onclick="openModal('financial')" class="w-full py-2 bg-surfaceBorder hover:bg-purple-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: SpeakTranslate Mobile -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-amber-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="desktop-mobile ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-amber-400 bg-amber-950/40 border border-amber-800/50 px-2.5 py-1 rounded-md">Mobile & Speech</span>
+                            <i class="fa-solid fa-microphone text-gray-500 group-hover:text-amber-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors mb-2">SpeakTranslate Mobile</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">Speech-to-speech cross-platform mobile translation application powered by Whisper, GPT-4o-mini, and ElevenLabs TTS.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">React Native</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Expo</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">ElevenLabs</span>
+                        </div>
+                        <button onclick="openModal('speaktranslate')" class="w-full py-2 bg-surfaceBorder hover:bg-amber-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4: Document Q&A Assistant -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-emerald-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/50 px-2.5 py-1 rounded-md">RAG System</span>
+                            <i class="fa-solid fa-file-contract text-gray-500 group-hover:text-emerald-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">Document Q&A Assistant</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">Retrieval-Augmented Generation (RAG) system with LangChain and FAISS for semantic document search and citation answers.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">LangChain</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">FAISS</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">FastAPI</span>
+                        </div>
+                        <button onclick="openModal('docqa')" class="w-full py-2 bg-surfaceBorder hover:bg-emerald-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 5: PetriNet Studio -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-rose-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="web">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-rose-400 bg-rose-950/40 border border-rose-800/50 px-2.5 py-1 rounded-md">Canvas Editor</span>
+                            <i class="fa-solid fa-draw-polygon text-gray-500 group-hover:text-rose-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-rose-400 transition-colors mb-2">PetriNet Studio</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">Figma-style infinite canvas editor built with Qwik framework & HTML5 Canvas with real-time simulation and WebM recording.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Qwik</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Canvas API</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">TypeScript</span>
+                        </div>
+                        <button onclick="openModal('petrinet')" class="w-full py-2 bg-surfaceBorder hover:bg-rose-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 6: NLP Spam Detector -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-blue-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="ai">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-blue-400 bg-blue-950/40 border border-blue-800/50 px-2.5 py-1 rounded-md">Machine Learning</span>
+                            <i class="fa-solid fa-shield-halved text-gray-500 group-hover:text-blue-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2">NLP Spam Detector</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">Text classification pipeline utilizing scikit-learn TF-IDF and Naive Bayes, deployed via FastAPI service.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">scikit-learn</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">FastAPI</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Joblib</span>
+                        </div>
+                        <button onclick="openModal('spam')" class="w-full py-2 bg-surfaceBorder hover:bg-blue-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 7: ReadNest Bookstore -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-emerald-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="web">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/50 px-2.5 py-1 rounded-md">MERN Stack</span>
+                            <i class="fa-solid fa-store text-gray-500 group-hover:text-emerald-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">ReadNest Bookstore</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">E-commerce bookstore web application with customer ordering, user auth, and administrative management APIs.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">React</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Node.js</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">MongoDB</span>
+                        </div>
+                        <button onclick="openModal('readnest')" class="w-full py-2 bg-surfaceBorder hover:bg-emerald-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 8: EdTech Learning Platform -->
+                <div class="project-card group bg-surface border border-surfaceBorder hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1" data-category="web">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800/50 px-2.5 py-1 rounded-md">EdTech & Streaming</span>
+                            <i class="fa-solid fa-graduation-cap text-gray-500 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">EdTech Learning Platform</h3>
+                        <p class="text-sm text-gray-400 line-clamp-3 mb-4">Next.js platform featuring adaptive HLS video streaming, Cloudflare R2 document storage, and course management workflows.</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Next.js</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">Cloudflare R2</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surfaceBorder text-gray-300">HLS Video</span>
+                        </div>
+                        <button onclick="openModal('edtech')" class="w-full py-2 bg-surfaceBorder hover:bg-cyan-600 text-gray-200 hover:text-white rounded-lg text-xs font-medium transition-colors flex items-center justify-center space-x-2">
+                            <span>Details & Architecture</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-surfaceBorder/50">
+            <div class="space-y-4 mb-12 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 text-blue-400 font-mono text-sm uppercase tracking-widest">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Career Track</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Work Experience</h2>
+            </div>
+
+            <div class="relative border-l border-surfaceBorder ml-3 md:ml-6 space-y-10 pl-6 md:pl-10">
+                <!-- Role 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-4 border-obsidian group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-surface border border-surfaceBorder p-6 rounded-2xl space-y-3">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Frontend Developer</h3>
+                                <p class="text-sm font-medium text-blue-400">CodeWingz • Lahore, Pakistan</p>
+                            </div>
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-surfaceBorder text-gray-300 w-fit">Jan 2026 – Aug 2026</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-2 leading-relaxed">
+                            <li>Built and shipped production-ready React and Next.js interfaces using TypeScript and Tailwind CSS with responsive layout architecture.</li>
+                            <li>Audited thousands of application URLs using Katana, httpx, and curl to diagnose crawlability, metadata, route-exposure, and security-header issues.</li>
+                            <li>Engineered technical SEO, indexability, metadata quality, and security fixes based on comprehensive site audits.</li>
+                            <li>Implemented unit/component testing using Vitest/Jest and automated end-to-end critical paths using Cypress.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-obsidian group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-surface border border-surfaceBorder p-6 rounded-2xl space-y-3">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Full-Stack Developer (Freelance)</h3>
+                                <p class="text-sm font-medium text-cyan-400">Bidzest • Remote</p>
+                            </div>
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-surfaceBorder text-gray-300 w-fit">Aug 2025</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-2 leading-relaxed">
+                            <li>Built and deployed a production Next.js + TypeScript lead-generation platform with modular components and validated forms.</li>
+                            <li>Implemented complete SEO suite including dynamic Open Graph metadata, sitemap generation, robots directives, and JSON-LD structured data.</li>
+                            <li>Created protected Firebase admin dashboard featuring real-time lead sorting, filtering, and data export.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-4 border-obsidian group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-surface border border-surfaceBorder p-6 rounded-2xl space-y-3">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Full-Stack Developer (Freelance)</h3>
+                                <p class="text-sm font-medium text-purple-400">BigBrains • Remote</p>
+                            </div>
+                            <span class="text-xs font-mono px-3 py-1 rounded-full bg-surfaceBorder text-gray-300 w-fit">Mar 2025</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-2 leading-relaxed">
+                            <li>Built a centralized learning platform giving students integrated access to courses, notes, and instructor content.</li>
+                            <li>Developed content management workflows that simplified administrative ops for dynamic note updates.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Contact Section -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-surfaceBorder/50">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Left Column: Education & Info -->
+                <div class="space-y-8">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 text-blue-400 font-mono text-sm uppercase tracking-widest">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Academic Background</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mt-2">Education</h2>
+                        
+                        <div class="mt-6 p-6 rounded-2xl bg-surface border border-surfaceBorder space-y-2">
+                            <span class="text-xs font-mono text-blue-400">2022 – 2026</span>
+                            <h3 class="text-lg font-bold text-white">Bachelor of Science in Software Engineering</h3>
+                            <p class="text-sm text-gray-400">University of Management and Technology (UMT)</p>
+                            <p class="text-xs text-gray-500">Lahore, Pakistan</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-white">Get In Touch</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Have an exciting project, AI application idea, or software engineering position? Feel free to reach out directly via email or phone!
+                        </p>
+                        
+                        <div class="space-y-3 font-mono text-sm">
+                            <div class="flex items-center space-x-3 text-gray-300">
+                                <div class="w-8 h-8 rounded-lg bg-surfaceBorder flex items-center justify-center text-blue-400">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <a href="mailto:thealihamza04@gmail.com" class="hover:text-blue-400 transition-colors">thealihamza04@gmail.com</a>
+                            </div>
+
+                            <div class="flex items-center space-x-3 text-gray-300">
+                                <div class="w-8 h-8 rounded-lg bg-surfaceBorder flex items-center justify-center text-emerald-400">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <a href="tel:+923252936408" class="hover:text-emerald-400 transition-colors">+92 325 2936408</a>
+                            </div>
+
+                            <div class="flex items-center space-x-3 text-gray-300">
+                                <div class="w-8 h-8 rounded-lg bg-surfaceBorder flex items-center justify-center text-purple-400">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <span>Lahore, Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Form -->
+                <div class="bg-surface border border-surfaceBorder p-8 rounded-2xl relative">
+                    <h3 class="text-2xl font-bold text-white mb-6">Send Me a Message</h3>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1.5" for="name">YOUR NAME</label>
+                            <input type="text" id="name" required class="w-full bg-obsidian border border-surfaceBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1.5" for="email">EMAIL ADDRESS</label>
+                            <input type="email" id="email" required class="w-full bg-obsidian border border-surfaceBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1.5" for="message">MESSAGE</label>
+                            <textarea id="message" rows="4" required class="w-full bg-obsidian border border-surfaceBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none" placeholder="Let's build something together..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-xl text-sm transition-all shadow-glow-blue flex items-center justify-center space-x-2">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+
+                    <!-- Form Notification Banner -->
+                    <div id="formNotification" class="hidden absolute inset-0 bg-surface/95 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center text-center p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Message Sent!</h4>
+                        <p class="text-sm text-gray-400">Thank you for getting in touch. I will respond to your inquiry shortly.</p>
+                        <button onclick="resetFormNotification()" class="px-4 py-2 bg-surfaceBorder hover:bg-gray-700 text-white rounded-lg text-xs font-medium">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-surfaceBorder py-8 bg-obsidian text-center text-xs text-gray-500">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Ali Hamza. Built with HTML, Tailwind CSS & JS.</p>
+            <div class="flex items-center space-x-4 font-mono">
+                <a href="https://github.com/thealihamza04" target="_blank" class="hover:text-gray-300">GitHub</a>
+                <span>•</span>
+                <a href="https://linkedin.com/in/thealihamza" target="_blank" class="hover:text-gray-300">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Expandable Project Details Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-surface border border-surfaceBorder rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 space-y-6 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically populated via Javascript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Data Store
+        const projectData = {
+            videra: {
+                title: "VIDERA – AI Video Editor",
+                subtitle: "Electron.js, React, TypeScript, FFmpeg, Whisper API",
+                details: [
+                    "Built an Electron.js desktop application using React, TypeScript, and Zustand with contextBridge for native media import and persistence.",
+                    "Implemented asynchronous FFmpeg media-processing pipelines in Node child processes for proxy generation, audio extraction, and waveform rendering.",
+                    "Integrated OpenAI Whisper speech-to-text with word-level timestamps to generate automated synchronized subtitles.",
+                    "Authored automated desktop UI tests using Playwright covering timeline editing and undo/redo operations."
+                ],
+                tech: ["Electron.js", "React", "TypeScript", "Zustand", "FFmpeg", "Node.js IPC", "Whisper API", "Playwright"]
+            },
+            financial: {
+                title: "Financial Sentiment Simulation",
+                subtitle: "Python, PyTorch, Transformers, FastAPI",
+                details: [
+                    "Built an end-to-end NLP system using PyTorch and FinBERT fine-tuned for financial sentiment classification.",
+                    "Deployed model predictions via FastAPI REST endpoints for real-time inference.",
+                    "Simulated quantitative trading strategies incorporating sentiment momentum, transaction costs, and benchmark evaluation."
+                ],
+                tech: ["Python", "PyTorch", "Hugging Face", "FinBERT", "FastAPI", "NumPy", "Pandas"]
+            },
+            speaktranslate: {
+                title: "SpeakTranslate Mobile App",
+                subtitle: "React Native, Expo, Whisper, GPT-4o-mini, ElevenLabs",
+                details: [
+                    "Developed a cross-platform mobile translation application integrating audio recording, transcription, and speech synthesis.",
+                    "Orchestrated OpenAI Whisper speech recognition, GPT-4o-mini translation pipelines, and ElevenLabs dynamic voice output.",
+                    "Implemented Firebase Auth, Firestore sync, local AsyncStorage preferences, and animated UI with Reanimated."
+                ],
+                tech: ["React Native", "Expo", "Whisper API", "GPT-4o-mini", "ElevenLabs", "Firebase", "TypeScript"]
+            },
+            docqa: {
+                title: "Document Q&A Assistant (RAG)",
+                subtitle: "Python, LangChain, FAISS, FastAPI",
+                details: [
+                    "Developed a Retrieval-Augmented Generation application for semantic querying of PDF, Markdown, and text files.",
+                    "Utilized LangChain and FAISS vector indices for semantic chunking and dynamic context retrieval.",
+                    "Exposed ingestion and interactive chat endpoints through FastAPI with dynamic source attribution."
+                ],
+                tech: ["Python", "LangChain", "FAISS", "FastAPI", "Embeddings", "Pydantic"]
+            },
+            petrinet: {
+                title: "PetriNet Studio Canvas Editor",
+                subtitle: "Qwik, TypeScript, HTML5 Canvas",
+                details: [
+                    "Engineered a Figma-inspired infinite canvas tool for Petri net modeling with custom rendering logic.",
+                    "Features pan-and-zoom controls, multi-selection, keyboard shortcuts, and real-time state machine token execution.",
+                    "Implemented WebM canvas recording and dynamic JSON export/import."
+                ],
+                tech: ["Qwik", "TypeScript", "HTML5 Canvas API", "WebM Video Encoder"]
+            },
+            spam: {
+                title: "NLP Spam Detector",
+                subtitle: "Python, scikit-learn, TF-IDF, FastAPI",
+                details: [
+                    "Engineered a text classification service utilizing scikit-learn TF-IDF vectorization and Multinomial Naive Bayes.",
+                    "Serialized model artifacts via Joblib for fast cold starts and memory efficiency.",
+                    "Exposed validated inference API endpoints with prediction confidence metrics."
+                ],
+                tech: ["Python", "scikit-learn", "TF-IDF", "FastAPI", "Joblib"]
+            },
+            readnest: {
+                title: "ReadNest Bookstore",
+                subtitle: "React, Node.js, Express.js, MongoDB",
+                details: [
+                    "Built a full-stack e-commerce web platform for bookstore management with complete checkout workflows.",
+                    "Integrated Zustand state management for responsive shopping cart operations and live search filter controls.",
+                    "Created secure Express/MongoDB administrative REST APIs for product inventory updates and order tracking."
+                ],
+                tech: ["React", "Zustand", "Node.js", "Express.js", "MongoDB", "Mongoose"]
+            },
+            edtech: {
+                title: "EdTech Learning Platform",
+                subtitle: "Next.js, Node.js, MongoDB, Cloudflare R2",
+                details: [
+                    "Constructed a unified course learning portal with Next.js and Tailwind CSS.",
+                    "Implemented adaptive HLS video streaming and document storage using Cloudflare R2.",
+                    "Engineered instructor dashboards for course content management and student progress monitoring."
+                ],
+                tech: ["Next.js", "TypeScript", "Node.js", "MongoDB", "Cloudflare R2", "HLS"]
+            }
+        };
+
+        // Modal Handler
+        function openModal(key) {
+            const data = projectData[key];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-xs font-mono text-blue-400">PROJECT OVERVIEW</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">${data.title}</h3>
+                        <p class="text-xs text-gray-400 font-mono mt-1">${data.subtitle}</p>
+                    </div>
+
+                    <hr class="border-surfaceBorder">
+
+                    <div class="space-y-2">
+                        <h4 class="text-sm font-semibold text-white">Key Highlights & Architecture:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-300 space-y-2">
+                            ${data.details.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="pt-2">
+                        <h4 class="text-xs font-mono text-gray-400 mb-2">TECHNOLOGIES USED</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${data.tech.map(t => `<span class="px-2.5 py-1 text-xs font-mono rounded-lg bg-surfaceBorder text-blue-300">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
+
+        // Project Category Filter Handler
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                    btn.classList.add('text-gray-400');
+                });
+                button.classList.add('active', 'bg-blue-600', 'text-white');
+                button.classList.remove('text-gray-400');
+
+                const filter = button.getAttribute('data-filter');
+                const cards = document.querySelectorAll('.project-card');
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Copy Email to Clipboard
+        function copyContactEmail() {
+            const email = "thealihamza04@gmail.com";
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const btnText = document.getElementById("copyBtnText");
+            btnText.innerText = "Email Copied!";
+            setTimeout(() => {
+                btnText.innerText = "Copy Email";
+            }, 2000);
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking nav items
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('formNotification').classList.remove('hidden');
+        }
+
+        function resetFormNotification() {
+            document.getElementById('formNotification').classList.add('hidden');
+            document.getElementById('contactForm').reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
